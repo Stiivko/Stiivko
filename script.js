@@ -37,28 +37,4 @@ function drawMaze() {
                 ctx.fillStyle = 'black';
                 ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
             } else {
-                ctx.fillStyle = 'white';
-                ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
-            }
-        }
-    }
-    ctx.fillStyle = 'red';
-    ctx.fillRect(player.x * blockSize, player.y * blockSize, blockSize, blockSize);
-}
-
-function movePlayer(e) {
-    const key = e.keyCode;
-    if (key === 37 && maze[player.y][player.x - 1] !== '1') player.x--;
-    if (key === 38 && maze[player.y - 1] && maze[player.y - 1][player.x] !== '1') player.y--;
-    if (key === 39 && maze[player.y][player.x + 1] !== '1') player.x++;
-    if (key === 40 && maze[player.y + 1] && maze[player.y + 1][player.x] !== '1') player.y++;
-    drawMaze();
-}
-
-function resetGame() {
-    player = { x: 1, y: 1 };
-    drawMaze();
-}
-
-document.addEventListener('keydown', movePlayer);
-drawMaze();
+                ctx.fill
