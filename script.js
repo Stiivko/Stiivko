@@ -22,4 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     // Container für die Spieleliste
-    
+    const gameList = document.querySelector(".game-list");
+
+    // Spiele dynamisch hinzufügen
+    games.forEach(game => {
+        // Erstellen eines Spiele-Cards
+        const gameCard = document.createElement("div");
+        gameCard.classList.add("game-card");
+
+        // Innerer HTML-Inhalt für jedes Spiel
+        gameCard.innerHTML = `
+            <img src="${game.image}" alt="${game.title}">
+            <h2>${game.title}</h2>
+            <p>${game.description}</p>
+        `;
+
+        // Spiel zu der Liste hinzufügen
+        gameList.appendChild(gameCard);
+    });
+
+    console.log("Spiele erfolgreich hinzugefügt.");
+});
