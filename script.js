@@ -1,87 +1,64 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Beispiel-Spiele-Daten
-    const games = [
-        {
-            id: 1,
-            title: "Counter-Strike: Global Offensive",
-            image: "https://via.placeholder.com/300x200",
-            description: "Ein actiongeladener Multiplayer-Shooter.",
-            rating: 4.5,
-            reviews: 120,
-        },
-        {
-            id: 2,
-            title: "Dota 2",
-            image: "https://via.placeholder.com/300x200",
-            description: "Ein strategisches MOBA-Spiel mit epischen Heldenkämpfen.",
-            rating: 4.0,
-            reviews: 85,
-        },
-        {
-            id: 3,
-            title: "The Witcher 3: Wild Hunt",
-            image: "https://via.placeholder.com/300x200",
-            description: "Ein episches Action-RPG mit einer tiefgründigen Geschichte.",
-            rating: 5.0,
-            reviews: 1000,
-        },
-        {
-            id: 4,
-            title: "Minecraft",
-            image: "https://via.placeholder.com/300x200",
-            description: "Ein Sandbox-Spiel, in dem du deine eigene Welt erschaffen kannst.",
-            rating: 4.8,
-            reviews: 2000,
-        },
-        {
-            id: 5,
-            title: "Grand Theft Auto V",
-            image: "https://via.placeholder.com/300x200",
-            description: "Ein Open-World-Spiel, das Freiheit und Spannung vereint.",
-            rating: 4.7,
-            reviews: 1500,
-        },
-        // Weitere Spiele hinzufügen...
-    ];
+// Beispiel für dynamische Spiel-Updates
+const gameUpdates = [
+    { title: "Dota 2: Neues Update", content: "Ein neues Update für Dota 2 wurde veröffentlicht. Viel Spaß!" },
+    { title: "Rocket League: Saison 6", content: "Die neue Saison von Rocket League ist jetzt live!" }
+];
 
-    // Beispiel-Foren-Daten
-    const threads = [
-        {
-            id: 1,
-            title: "Wie man in CS:GO gewinnt",
-            creator: "Max123",
-            createdAt: "2024-12-20",
-        },
-        {
-            id: 2,
-            title: "Beste Dota 2 Helden",
-            creator: "NoobMaster",
-            createdAt: "2024-12-18",
-        },
-        {
-            id: 3,
-            title: "Top 5 Tipps für GTA V",
-            creator: "GamerPro",
-            createdAt: "2024-12-15",
-        },
-        // Weitere Threads hinzufügen...
-    ];
+const gameUpdatesContainer = document.getElementById("game-updates-container");
+gameUpdates.forEach(update => {
+    const updateCard = document.createElement("div");
+    updateCard.className = "update-card";
+    updateCard.innerHTML = `
+        <h3>${update.title}</h3>
+        <p>${update.content}</p>
+    `;
+    gameUpdatesContainer.appendChild(updateCard);
+});
 
-    // Spiele-Daten dynamisch einfügen
-    const gameContainer = document.getElementById("game-container");
-    games.forEach(game => {
-        const gameCard = document.createElement("div");
-        gameCard.classList.add("game-card");
-        gameCard.innerHTML = `
-            <img src="${game.image}" alt="${game.title}">
-            <h2>${game.title}</h2>
-            <p>${game.description}</p>
-            <p>Bewertung: ⭐ ${game.rating} (${game.reviews} Bewertungen)</p>
-            <button onclick="rateGame(${game.id})">Bewerten</button>
-            <button onclick="viewComments(${game.id})">Kommentare anzeigen</button>
-        `;
-        gameContainer.appendChild(gameCard);
-    });
+// Labyrinth-Spiel
+const canvas = document.getElementById("maze");
+const ctx = canvas.getContext("2d");
+const blockSize = 30;
+const maze = [
+    "1111111111111111",
+    "1000000000000001",
+    "1011111111101111",
+    "1010000000101001",
+    "1010111110101011",
+    "1000000000100001",
+    "1111111111101111",
+];
+let player = { x: 1, y: 1 };
 
-    // Forum-Threads dynamisch einfügen
-    const threadContainer = document.getElementById("
+function drawMaze() {
+    for (let y = 0; y < maze.length; y++) {
+        for (let x = 0; x < maze[y].length; x++) {
+            if (maze[y][x] === '1') {
+                ctx.fillStyle = 'black';
+                ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+            } else {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
+            }
+        }
+    }
+    ctx.fillStyle = 'red';
+    ctx.fillRect(player.x * blockSize, player.y * blockSize, blockSize, blockSize);
+}
+
+function movePlayer(e) {
+    const key = e.keyCode;
+    if (key === 37 && maze[player.y][player.x - 1] !== '1') player.x--;
+    if (key === 38 && maze[player.y - 1] && maze[player.y - 1][player.x] !== '1') player.y--;
+    if (key === 39 && maze[player.y][player.x + 1] !== '1') player.x++;
+    if (key === 40 && maze[player.y + 1] && maze[player.y + 1][player.x] !== '1') player.y++;
+    drawMaze();
+}
+
+function resetGame() {
+    player = { x: 1, y: 1 };
+    drawMaze();
+}
+
+document.addEventListener('keydown', movePlayer);
+drawMaze();
