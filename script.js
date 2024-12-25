@@ -1,40 +1,68 @@
-// Beispiel für dynamische Spiel-Updates
-const gameUpdates = [
-    { title: "Dota 2: Neues Update", content: "Ein neues Update für Dota 2 wurde veröffentlicht. Viel Spaß!" },
-    { title: "Rocket League: Saison 6", content: "Die neue Saison von Rocket League ist jetzt live!" }
-];
+// Dropdown Menü Steuerung
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
 
-const gameUpdatesContainer = document.getElementById("game-updates-container");
-gameUpdates.forEach(update => {
-    const updateCard = document.createElement("div");
-    updateCard.className = "update-card";
-    updateCard.innerHTML = `
-        <h3>${update.title}</h3>
-        <p>${update.content}</p>
-    `;
-    gameUpdatesContainer.appendChild(updateCard);
+    dropdown.addEventListener('mouseenter', function() {
+        dropdownContent.style.display = 'block';
+    });
+
+    dropdown.addEventListener('mouseleave', function() {
+        dropdownContent.style.display = 'none';
+    });
 });
 
-// Labyrinth-Spiel
-const canvas = document.getElementById("maze");
-const ctx = canvas.getContext("2d");
-const blockSize = 30;
-const maze = [
-    "1111111111111111",
-    "1000000000000001",
-    "1011111111101111",
-    "1010000000101001",
-    "1010111110101011",
-    "1000000000100001",
-    "1111111111101111",
-];
-let player = { x: 1, y: 1 };
+// Kommentar hinzufügen
+const commentButton = document.querySelector('.comment-section button');
+const commentInput = document.querySelector('.comment-section input[type="text"]');
+const commentsContainer = document.querySelector('.comments');
 
-function drawMaze() {
-    for (let y = 0; y < maze.length; y++) {
-        for (let x = 0; x < maze[y].length; x++) {
-            if (maze[y][x] === '1') {
-                ctx.fillStyle = 'black';
-                ctx.fillRect(x * blockSize, y * blockSize, blockSize, blockSize);
-            } else {
-                ctx.fill
+commentButton.addEventListener('click', function() {
+    const commentText = commentInput.value.trim();
+    if (commentText) {
+        const commentElement = document.createElement('div');
+        commentElement.classList.add('comment');
+        commentElement.innerHTML = `<p><strong>Du:</strong> ${commentText}</p>`;
+        commentsContainer.appendChild(commentElement);
+        commentInput.value = ''; // Eingabefeld zurücksetzen
+    }
+});
+
+// Benutzerprofil-Statistiken (Demonstration der Funktionalität)
+const profileStats = document.querySelector('.user-profile .profile-stats');
+
+function updateProfileStats() {
+    profileStats.innerHTML = `
+        <div>
+            <h3>Level</h3>
+            <p>${Math.floor(Math.random() * 10) + 1}</p>
+        </div>
+        <div>
+            <h3>Gespeicherte Spiele</h3>
+            <p>${Math.floor(Math.random() * 20) + 1}</p>
+        </div>
+        <div>
+            <h3>Freunde</h3>
+            <p>${Math.floor(Math.random() * 50) + 1}</p>
+        </div>
+    `;
+}
+
+// Simuliere Profilupdate alle 5 Sekunden
+setInterval(updateProfileStats, 5000);
+
+// Tooltip-Funktion (für Zukunftsverwendung)
+function showTooltip(element, message) {
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('tooltip');
+    tooltip.textContent = message;
+    element.appendChild(tooltip);
+    
+    element.addEventListener('mouseenter', () => {
+        tooltip.style.visibility = 'visible';
+    });
+
+    element.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = 'hidden';
+    });
+}
