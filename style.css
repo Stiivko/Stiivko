@@ -1,29 +1,21 @@
 /* Allgemeine Stile */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
     margin: 0;
     padding: 0;
-    color: #333;
-    line-height: 1.6;
 }
 
-/* Globale Box-Sizing */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* Header */
 header {
-    background-color: #222;
+    background-color: #333;
     color: white;
-    padding: 10px 0;
+    padding: 20px;
     text-align: center;
-    position: fixed;
+    position: sticky;
     top: 0;
-    width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header nav {
@@ -32,20 +24,23 @@ header nav {
 
 header nav a {
     color: white;
-    margin: 0 15px;
+    margin: 0 20px;
     text-decoration: none;
     font-size: 1.1em;
+    padding: 10px;
 }
 
 header nav a:hover {
-    text-decoration: underline;
+    background-color: #ff66b2;
+    border-radius: 5px;
 }
 
-header nav .dropdown {
+/* Dropdown Menü */
+header nav a.dropdown {
     position: relative;
 }
 
-header nav .dropdown:hover .dropdown-content {
+header nav a.dropdown:hover .dropdown-content {
     display: block;
 }
 
@@ -73,323 +68,161 @@ header nav .dropdown-content a:hover {
 .hero {
     background: url('hero-image.jpg') no-repeat center center;
     background-size: cover;
-    padding: 100px 0;
+    padding: 150px 0;
     color: white;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 60px; /* Abstand für das Sticky-Header */
+    position: relative;
+    z-index: 1;
 }
 
 .hero-text h2 {
-    font-size: 3.5em;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-size: 4em;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 .hero-text p {
     font-size: 1.5em;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+}
+
+.cta-button {
+    padding: 12px 30px;
+    background-color: #ff66b2;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ffcc00;
 }
 
 /* Featured Games */
-.featured-games, .top-discussions, .news, .user-reviews, .game-updates, .forum, .maze-game, .user-profile {
-    padding: 50px 10%;
+.featured-games {
+    padding: 50px 20px;
     background-color: #fff;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 40px;
-    border-radius: 10px;
 }
 
-.featured-games h2, .top-discussions h2, .news h2, .user-reviews h2, .game-updates h2, .forum h2, .maze-game h2, .user-profile h2 {
+.featured-games h2 {
     font-size: 2.5em;
-    color: #333;
     margin-bottom: 20px;
+    color: #333;
 }
 
-/* Buttons */
-button {
-    padding: 10px 20px;
-    background-color: #ff66b2;
-    color: white;
-    font-size: 1.1em;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #ffcc00;
-}
-
-/* Canvas */
-canvas {
-    border: 2px solid #000;
-    margin-top: 20px;
-    border-radius: 5px;
-}
-
-/* Reviews and Forum */
-.review-card, .forum-card, .update-card, .profile-card {
-    background-color: #fff;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Kommentare */
-.comment-section {
-    margin-top: 20px;
-}
-
-.comment-section input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    font-size: 1.2em;
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.comment-section button {
-    padding: 10px 20px;
-    background-color: #ff66b2;
-    color: white;
-    font-size: 1em;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.comment-section button:hover {
-    background-color: #ffcc00;
-}
-
-/* Profil */
-.user-profile {
-    background-color: #fff;
-    padding: 20px;
-    margin-top: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.user-profile p {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-/* Erweiterte Profil Sektion */
-.user-profile .profile-stats {
+.game-list {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.user-profile .profile-stats div {
-    flex: 1;
-    text-align: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    margin: 10px;
-    border-radius: 8px;
-}
-
-.user-profile .profile-stats div h3 {
-    margin-bottom: 10px;
-    font-size: 1.5em;
-}
-
-/* Benutzerfeedback und Bewertungen */
-.user-reviews-container {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-.user-reviews-container .review-card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.review-card h4 {
-    font-size: 1.4em;
-    color: #ff66b2;
-}
-
-/* Spiel-Updates */
-.game-updates .update-card {
-    background-color: #f7f7f7;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.game-updates .update-card h3 {
-    color: #333;
-}
-
-/* Formulare */
-form {
+.game-card {
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.1em;
-    margin-bottom: 15px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
 }
 
-form button {
+.game-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.game-btn {
     padding: 10px 20px;
     background-color: #ff66b2;
     color: white;
-    font-size: 1.1em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
     transition: background-color 0.3s ease;
 }
 
-form button:hover {
+.game-btn:hover {
     background-color: #ffcc00;
 }
 
-/* Animations */
-@keyframes slide-in {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+/* User Reviews */
+.user-reviews {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
 }
 
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.user-reviews h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-.section-animated {
-    animation: slide-in 0.5s ease-out forwards;
+.user-reviews-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.fade-in {
-    animation: fade-in 2s ease-out forwards;
+.review-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+.review-card h4 {
+    font-size: 1.5em;
+    color: #ff66b2;
+}
+
+.review-card p {
+    font-size: 1.1em;
+    color: #555;
 }
 
 /* Footer */
 footer {
-    background-color: #222;
+    background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 1em;
+    position: relative;
+    margin-top: 50px;
 }
 
 footer a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 
 footer a:hover {
     text-decoration: underline;
 }
 
-/* Responsiveness */
-@media (max-width: 1024px) {
-    .featured-games, .top-discussions, .news, .user-reviews, .game-updates, .forum, .maze-game, .user-profile {
-        padding: 30px;
-        text-align: left;
-    }
-
-    .user-reviews-container {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    header nav {
-        text-align: center;
-    }
-
-    header nav a {
-        display: inline-block;
-        margin-bottom: 10px;
-    }
-}
-
-/* Mobile Design */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .featured-games, .top-discussions, .news, .user-reviews, .game-updates, .forum, .maze-game, .user-profile {
-        padding: 20px;
-        text-align: left;
-    }
-
-    .user-reviews-container {
-        grid-template-columns: 1fr;
-    }
-
-    header nav {
-        text-align: center;
+    .game-list, .user-reviews-container {
+        flex-direction: column;
+        align-items: center;
     }
 
     header nav a {
-        display: inline-block;
-        margin-bottom: 10px;
+        margin: 10px 0;
     }
 
-    .user-profile .profile-stats {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .user-profile .profile-stats div {
-        margin-bottom: 10px;
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1.2em;
     }
 }
-
-/* Gallery */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 50px 10%;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-    transition: all 0.3s ease;
-}
-
-/* Tooltips */
-.tooltip {
-   
