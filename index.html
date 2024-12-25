@@ -1,174 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DBD Tracker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #1c1c1c;
-      color: #ffffff;
-    }
-    h1 {
-      text-align: center;
-    }
-    h2 {
-      text-align: center;
-    }
-    label, input, select, button {
-      margin: 10px 0;
-      color: #ffffff;
-      background-color: #333333;
-      border: 1px solid #555555;
-      padding: 5px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    table, th, td {
-      border: 1px solid #555555;
-    }
-    th, td {
-      padding: 10px;
-      text-align: center;
-    }
-    pre {
-      border: 1px solid #555555;
-      padding: 10px;
-      background-color: #333333;
-      color: #ffffff;
-      white-space: pre-wrap;
-    }
-    button:hover {
-      background-color: #444444;
-    }
-    .notification {
-      text-align: center;
-      margin: 10px 0;
-      color: #00ff00;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test-Seite</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>DBD Tracker</h1>
-  <p style="text-align: center; font-size: 14px;">A simple Website to keep Track of your DBD Challenges/Streaks. No login necessary. Stats saved in your Browser's Local Storage<br>
-  For feedback or ideas add "sleepingalot" on Discord or Steam!</p>
+    <header>
+        <h1>Willkommen auf meiner Test-Seite!</h1>
+        <p>Erforsche, was GitHub Pages bieten kann.</p>
+    </header>
+    <main>
+        <section class="info">
+            <h2>Interaktives Feature</h2>
+            <p>Klicke den Button unten und sieh, wie sich der Zähler verändert:</p>
+            <button id="counter-btn">Klick mich!</button>
+            <p id="counter-display">Zähler: 0</p>
+        </section>
 
-  <div id="notification" class="notification"></div>
-
-  <!-- Dropdown for Challenges / Streaks -->
-  <label for="challengeSelect">Select a Challenge / Streak:</label>
-  <select id="challengeSelect"></select>
-
-  <!-- Enter Progress -->
-  <label for="progressInput">Progress:</label>
-  <input id="progressInput" type="number" min="1" max="9999" />
-  <button onclick="updateProgress()">Save</button>
-  <button onclick="deleteChallenge()">Delete Challenge / Streak</button>
-
-  <!-- Add New Challenge / Streak -->
-  <h2>Add New Challenge / Streak</h2>
-  <label for="newChallenge">Name:</label>
-  <input id="newChallenge" type="text" />
-  <button onclick="addChallenge()">Add</button>
-
-  <!-- Sorted Challenge / Streak List -->
-  <h2>Challenge / Streak List</h2>
-  <button onclick="sortByName()">Sort by Name</button>
-  <button onclick="sortByProgress()">Sort by Progress</button>
-  <button onclick="sortByRecent()">Sort by Recent</button>
-  <pre id="challengeList"></pre>
-
-  <script>
-    // Store data in LocalStorage
-    const defaultChallenges = ['Survivor Escape Streak', 'Killer Win Streak', 'Copy Cat Challenge', 'Random Perk Streak', 'Random Killer Streak'];
-    const challenges = JSON.parse(localStorage.getItem('challenges')) || defaultChallenges;
-    const progress = JSON.parse(localStorage.getItem('progress')) || {};
-    const timestamps = JSON.parse(localStorage.getItem('timestamps')) || {};
-
-    const challengeSelect = document.getElementById('challengeSelect');
-    const challengeList = document.getElementById('challengeList');
-    const notification = document.getElementById('notification');
-
-    function showNotification(message) {
-      notification.textContent = message;
-      setTimeout(() => notification.textContent = '', 3000);
-    }
-
-    // Update dropdown
-    function updateDropdown() {
-      challengeSelect.innerHTML = '';
-      challenges.forEach((challenge) => {
-        const option = document.createElement('option');
-        option.value = challenge;
-        option.textContent = challenge;
-        challengeSelect.appendChild(option);
-      });
-      if (challengeSelect.options.length > 0) {
-        challengeSelect.selectedIndex = 0;
-      }
-    }
-
-    // Update challenge list
-    function updateChallengeList() {
-      const list = challenges.map(challenge => `${challenge}: ${progress[challenge] || 0}`);
-      challengeList.textContent = list.join('\n');
-    }
-
-    // Save progress
-    function updateProgress() {
-      const selectedChallenge = challengeSelect.value;
-      const value = document.getElementById('progressInput').value;
-      if (value >= 1 && value <= 9999) {
-        progress[selectedChallenge] = value;
-        timestamps[selectedChallenge] = Date.now();
-        localStorage.setItem('progress', JSON.stringify(progress));
-        localStorage.setItem('timestamps', JSON.stringify(timestamps));
-        updateChallengeList();
-        showNotification(`Progress for '${selectedChallenge}' updated to ${value}.`);
-      } else {
-        alert('Please enter a number between 1 and 9999.');
-      }
-    }
-
-    // Add new challenge
-    function addChallenge() {
-      const newChallenge = document.getElementById('newChallenge').value.trim();
-      if (newChallenge && !challenges.includes(newChallenge)) {
-        challenges.push(newChallenge);
-        localStorage.setItem('challenges', JSON.stringify(challenges));
-        updateDropdown();
-        updateChallengeList();
-        showNotification(`Challenge '${newChallenge}' added.`);
-      } else {
-        alert('Challenge already exists or is empty!');
-      }
-    }
-
-    // Delete selected challenge
-    function deleteChallenge() {
-      const selectedChallenge = challengeSelect.value;
-      const index = challenges.indexOf(selectedChallenge);
-      if (index > -1) {
-        challenges.splice(index, 1);
-        delete progress[selectedChallenge];
-        delete timestamps[selectedChallenge];
-        localStorage.setItem('challenges', JSON.stringify(challenges));
-        localStorage.setItem('progress', JSON.stringify(progress));
-        localStorage.setItem('timestamps', JSON.stringify(timestamps));
-        updateDropdown();
-        updateChallengeList();
-        showNotification(`Challenge '${selectedChallenge}' deleted.`);
-      }
-    }
-
-    updateDropdown();
-    updateChallengeList();
-  </script>
-
-  <h2 style="text-align: center; margin-top: 20px;">Made by sleepingalot</h2>
+        <section class="design-showcase">
+            <h2>Warum Design wichtig ist</h2>
+            <p>Gut gestaltete Seiten wirken einladend und professionell. Diese Seite zeigt ein simples, sauberes Layout als Beispiel.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Test-Seite. Erstellt mit ❤️.</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
