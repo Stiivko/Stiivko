@@ -1,68 +1,85 @@
-// Dropdown Menü Steuerung
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownContent = dropdown.querySelector('.dropdown-content');
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming-Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-    dropdown.addEventListener('mouseenter', function() {
-        dropdownContent.style.display = 'block';
-    });
+<header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Featured Games</a>
+        <a href="#">Forum</a>
+        <a href="#">News</a>
+        <a href="#">User Reviews</a>
+        <a href="#" class="dropdown">Profile
+            <div class="dropdown-content">
+                <a href="#">My Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </a>
+    </nav>
+</header>
 
-    dropdown.addEventListener('mouseleave', function() {
-        dropdownContent.style.display = 'none';
-    });
-});
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-text">
+        <h2>Willkommen auf unserer Gaming-Plattform!</h2>
+        <p>Finde deine Lieblingsspiele und diskutiere mit der Community!</p>
+        <button class="cta-button">Jetzt Entdecken</button>
+    </div>
+</section>
 
-// Kommentar hinzufügen
-const commentButton = document.querySelector('.comment-section button');
-const commentInput = document.querySelector('.comment-section input[type="text"]');
-const commentsContainer = document.querySelector('.comments');
-
-commentButton.addEventListener('click', function() {
-    const commentText = commentInput.value.trim();
-    if (commentText) {
-        const commentElement = document.createElement('div');
-        commentElement.classList.add('comment');
-        commentElement.innerHTML = `<p><strong>Du:</strong> ${commentText}</p>`;
-        commentsContainer.appendChild(commentElement);
-        commentInput.value = ''; // Eingabefeld zurücksetzen
-    }
-});
-
-// Benutzerprofil-Statistiken (Demonstration der Funktionalität)
-const profileStats = document.querySelector('.user-profile .profile-stats');
-
-function updateProfileStats() {
-    profileStats.innerHTML = `
-        <div>
-            <h3>Level</h3>
-            <p>${Math.floor(Math.random() * 10) + 1}</p>
+<!-- Featured Games -->
+<section class="featured-games">
+    <h2>Featured Games</h2>
+    <div class="game-list">
+        <div class="game-card">
+            <img src="game1.jpg" alt="Game 1">
+            <h3>Game 1</h3>
+            <p>Beschreibung des Spiels.</p>
+            <button class="game-btn">Jetzt Spielen</button>
         </div>
-        <div>
-            <h3>Gespeicherte Spiele</h3>
-            <p>${Math.floor(Math.random() * 20) + 1}</p>
+        <div class="game-card">
+            <img src="game2.jpg" alt="Game 2">
+            <h3>Game 2</h3>
+            <p>Beschreibung des Spiels.</p>
+            <button class="game-btn">Jetzt Spielen</button>
         </div>
-        <div>
-            <h3>Freunde</h3>
-            <p>${Math.floor(Math.random() * 50) + 1}</p>
+        <div class="game-card">
+            <img src="game3.jpg" alt="Game 3">
+            <h3>Game 3</h3>
+            <p>Beschreibung des Spiels.</p>
+            <button class="game-btn">Jetzt Spielen</button>
         </div>
-    `;
-}
+    </div>
+</section>
 
-// Simuliere Profilupdate alle 5 Sekunden
-setInterval(updateProfileStats, 5000);
+<!-- User Reviews -->
+<section class="user-reviews">
+    <h2>Benutzerbewertungen</h2>
+    <div class="user-reviews-container">
+        <div class="review-card">
+            <h4>Game 1</h4>
+            <p>“Toller Titel! Sehr spannend.”</p>
+        </div>
+        <div class="review-card">
+            <h4>Game 2</h4>
+            <p>“Ein Muss für jeden Gamer!”</p>
+        </div>
+    </div>
+</section>
 
-// Tooltip-Funktion (für Zukunftsverwendung)
-function showTooltip(element, message) {
-    const tooltip = document.createElement('div');
-    tooltip.classList.add('tooltip');
-    tooltip.textContent = message;
-    element.appendChild(tooltip);
-    
-    element.addEventListener('mouseenter', () => {
-        tooltip.style.visibility = 'visible';
-    });
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Gaming Website</p>
+    <p><a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+</footer>
 
-    element.addEventListener('mouseleave', () => {
-        tooltip.style.visibility = 'hidden';
-    });
-}
+<script src="script.js"></script>
+</body>
+</html>
