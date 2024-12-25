@@ -1,51 +1,87 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steam-Spiele Forum</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="logo-container">
-            <h1 class="logo">Steam-Spiele Forum</h1>
-        </div>
-        <nav>
-            <a href="/login.html">Anmelden</a>
-            <a href="/register.html">Registrieren</a>
-            <a href="/profile.html">Profil</a>
-            <a href="/games.html">Spiele</a>
-        </nav>
-    </header>
+document.addEventListener("DOMContentLoaded", () => {
+    // Beispiel-Spiele-Daten
+    const games = [
+        {
+            id: 1,
+            title: "Counter-Strike: Global Offensive",
+            image: "https://via.placeholder.com/300x200",
+            description: "Ein actiongeladener Multiplayer-Shooter.",
+            rating: 4.5,
+            reviews: 120,
+        },
+        {
+            id: 2,
+            title: "Dota 2",
+            image: "https://via.placeholder.com/300x200",
+            description: "Ein strategisches MOBA-Spiel mit epischen Heldenkämpfen.",
+            rating: 4.0,
+            reviews: 85,
+        },
+        {
+            id: 3,
+            title: "The Witcher 3: Wild Hunt",
+            image: "https://via.placeholder.com/300x200",
+            description: "Ein episches Action-RPG mit einer tiefgründigen Geschichte.",
+            rating: 5.0,
+            reviews: 1000,
+        },
+        {
+            id: 4,
+            title: "Minecraft",
+            image: "https://via.placeholder.com/300x200",
+            description: "Ein Sandbox-Spiel, in dem du deine eigene Welt erschaffen kannst.",
+            rating: 4.8,
+            reviews: 2000,
+        },
+        {
+            id: 5,
+            title: "Grand Theft Auto V",
+            image: "https://via.placeholder.com/300x200",
+            description: "Ein Open-World-Spiel, das Freiheit und Spannung vereint.",
+            rating: 4.7,
+            reviews: 1500,
+        },
+        // Weitere Spiele hinzufügen...
+    ];
 
-    <main>
-        <section class="hero">
-            <div class="hero-text">
-                <h2>Willkommen im <span class="highlight">Steam-Spiele Forum</span></h2>
-                <p>Entdecke und diskutiere die besten Spiele von Steam. Tausche dich mit der Community aus!</p>
-            </div>
-        </section>
+    // Beispiel-Foren-Daten
+    const threads = [
+        {
+            id: 1,
+            title: "Wie man in CS:GO gewinnt",
+            creator: "Max123",
+            createdAt: "2024-12-20",
+        },
+        {
+            id: 2,
+            title: "Beste Dota 2 Helden",
+            creator: "NoobMaster",
+            createdAt: "2024-12-18",
+        },
+        {
+            id: 3,
+            title: "Top 5 Tipps für GTA V",
+            creator: "GamerPro",
+            createdAt: "2024-12-15",
+        },
+        // Weitere Threads hinzufügen...
+    ];
 
-        <section class="game-list">
-            <h2>Entdecke die besten Steam-Spiele!</h2>
-            <div id="game-container">
-                <!-- Spiele werden hier dynamisch geladen -->
-            </div>
-        </section>
+    // Spiele-Daten dynamisch einfügen
+    const gameContainer = document.getElementById("game-container");
+    games.forEach(game => {
+        const gameCard = document.createElement("div");
+        gameCard.classList.add("game-card");
+        gameCard.innerHTML = `
+            <img src="${game.image}" alt="${game.title}">
+            <h2>${game.title}</h2>
+            <p>${game.description}</p>
+            <p>Bewertung: ⭐ ${game.rating} (${game.reviews} Bewertungen)</p>
+            <button onclick="rateGame(${game.id})">Bewerten</button>
+            <button onclick="viewComments(${game.id})">Kommentare anzeigen</button>
+        `;
+        gameContainer.appendChild(gameCard);
+    });
 
-        <section class="latest-threads">
-            <h2>Neueste Diskussionen</h2>
-            <div id="thread-container">
-                <!-- Threads werden hier dynamisch geladen -->
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Steam-Spiele Forum. Alle Rechte vorbehalten.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    // Forum-Threads dynamisch einfügen
+    const threadContainer = document.getElementById("
