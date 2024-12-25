@@ -1,48 +1,67 @@
+/* Allgemeine Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f7f7f7;
 }
 
 header {
     background-color: #222;
     color: white;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
 }
 
-nav a {
+header nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
+    font-weight: bold;
 }
 
-nav a:hover {
+header nav a:hover {
     text-decoration: underline;
 }
 
+main {
+    padding: 20px;
+}
+
+/* Spiele-Liste */
 .game-list {
-    margin: 20px;
+    margin-bottom: 40px;
+}
+
+.game-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    width: 100%;
     padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.2em;
 }
 
 .game-card {
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    width: 280px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    background-color: white;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .game-card:hover {
     transform: scale(1.05);
-    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .game-card img {
@@ -52,18 +71,55 @@ nav a:hover {
 }
 
 .game-card h2 {
-    font-size: 1.2em;
-    margin: 10px;
+    font-size: 1.3em;
+    margin: 15px;
 }
 
 .game-card p {
-    margin: 10px;
+    margin: 15px;
     color: #555;
+}
+
+.game-card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+}
+
+.game-card button:hover {
+    background-color: #0056b3;
+}
+
+/* Latest Threads */
+.latest-threads {
+    margin-top: 50px;
+}
+
+.latest-threads h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.thread-card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.thread-card h3 {
+    margin: 0 0 10px;
 }
 
 footer {
     text-align: center;
     background-color: #222;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
 }
