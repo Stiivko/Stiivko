@@ -12,39 +12,88 @@
             <h1 class="logo">Steam-Spiele Forum</h1>
         </div>
         <nav>
+            <a href="/">Startseite</a>
+            <a href="/games.html">Spiele</a>
+            <a href="/discussions.html">Diskussionen</a>
+            <a href="/news.html">Neuigkeiten</a>
+            <a href="/profile.html">Profil</a>
             <a href="/login.html">Anmelden</a>
             <a href="/register.html">Registrieren</a>
-            <a href="/profile.html">Profil</a>
-            <a href="/games.html">Spiele</a>
         </nav>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-text">
                 <h2>Willkommen im <span class="highlight">Steam-Spiele Forum</span></h2>
-                <p>Entdecke und diskutiere die besten Spiele von Steam. Tausche dich mit der Community aus!</p>
+                <p>Entdecke die besten Steam-Spiele, diskutiere mit anderen Spielern und teile deine Erfahrungen!</p>
             </div>
         </section>
 
-        <section class="game-list">
-            <h2>Entdecke die besten Steam-Spiele!</h2>
-            <div id="game-container">
-                <!-- Spiele werden hier dynamisch geladen -->
+        <!-- Featured Games -->
+        <section class="featured-games">
+            <h2>Unsere Empfehlungen</h2>
+            <div id="featured-games-container">
+                <!-- Dynamisch befüllte Spiele -->
             </div>
         </section>
 
-        <section class="latest-threads">
-            <h2>Neueste Diskussionen</h2>
-            <div id="thread-container">
-                <!-- Threads werden hier dynamisch geladen -->
+        <!-- Beliebte Diskussionen -->
+        <section class="top-discussions">
+            <h2>Beliebte Diskussionen</h2>
+            <div id="discussion-container">
+                <!-- Dynamisch befüllte Diskussionen -->
             </div>
         </section>
+
+        <!-- Neueste Nachrichten -->
+        <section class="news">
+            <h2>Neueste Nachrichten</h2>
+            <div id="news-container">
+                <!-- Dynamisch befüllte Nachrichten -->
+            </div>
+        </section>
+
+        <!-- Benutzerbewertungen -->
+        <section class="user-reviews">
+            <h2>Benutzerbewertungen</h2>
+            <div id="reviews-container">
+                <!-- Dynamische Bewertungen -->
+            </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section class="forum">
+            <h2>Forum</h2>
+            <div id="forum-container">
+                <!-- Dynamische Forenbeiträge -->
+            </div>
+        </section>
+
+        <!-- Spiel-Updates -->
+        <section class="game-updates">
+            <h2>Neueste Spiel-Updates</h2>
+            <div id="game-updates-container">
+                <!-- Dynamische Updates -->
+            </div>
+        </section>
+
+        <!-- Labyrinth Spiel -->
+        <section class="maze-game">
+            <h2>Labyrinth-Spiel</h2>
+            <div id="maze-container">
+                <canvas id="maze" width="500" height="500"></canvas>
+            </div>
+            <button onclick="resetGame()">Spiel zurücksetzen</button>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Steam-Spiele Forum. Alle Rechte vorbehalten.</p>
+            <p>Kontakt | Datenschutz | Impressum</p>
+        </footer>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Steam-Spiele Forum. Alle Rechte vorbehalten.</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
