@@ -10,16 +10,24 @@
     <header>
         <h1>Top Steam-Spiele Forum</h1>
         <nav>
-            <a href="/register.html">Registrieren</a>
-            <a href="/login.html">Anmelden</a>
-            <a href="/stats.html">Statistiken</a>
+            <a href="index.html">Startseite</a>
+            <a href="register.html">Registrieren</a>
+            <a href="login.html">Anmelden</a>
+            <a href="stats.html">Statistiken</a>
         </nav>
     </header>
     <main>
         <section class="game-list">
-            <h2>Beliebte Steam-Spiele</h2>
+            <h2>Entdecke die besten Steam-Spiele!</h2>
+            <input type="text" id="search-bar" placeholder="Suche nach Spielen..." onkeyup="searchGames()">
             <div id="game-container">
-                <!-- Spiele-Cards werden hier dynamisch eingefügt -->
+                <!-- Dynamisch generierte Spielekarten -->
+            </div>
+        </section>
+        <section class="latest-threads">
+            <h2>Neueste Diskussionen</h2>
+            <div id="thread-container">
+                <!-- Dynamische Anzeige von Threads -->
             </div>
         </section>
     </main>
